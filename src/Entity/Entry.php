@@ -59,10 +59,16 @@ class Entry
      */
     private $entries;
 
+    /**
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="entry_id")
+     */
+    private $entryUsers;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
         $this->entries = new ArrayCollection();
+        $this->entryUsers = new ArrayCollection();
     }
 
     /**
@@ -146,35 +152,7 @@ class Entry
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
 
-    public function addUser(User $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->setEntry($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($user->getEntry() === $this) {
-                $user->setEntry(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|EntryFood[]
@@ -200,6 +178,36 @@ class Entry
             // set the owning side to null (unless already changed)
             if ($entry->getIDEntry() === $this) {
                 $entry->setIDEntry(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getEntryUsers(): Collection
+    {
+        return $this->entryUsers;
+    }
+
+    public function addEntryUser(User $entryUser): self
+    {
+        if (!$this->entryUsers->contains($entryUser)) {
+            $this->entryUsers[] = $entryUser;
+            $entryUser->setEntryId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEntryUser(User $entryUser): self
+    {
+        if ($this->entryUsers->removeElement($entryUser)) {
+            // set the owning side to null (unless already changed)
+            if ($entryUser->getEntryId() === $this) {
+                $entryUser->setEntryId(null);
             }
         }
 
