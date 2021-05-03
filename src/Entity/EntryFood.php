@@ -23,7 +23,7 @@ class EntryFood
     private $IDEntry;
 
     /**
-     * @ORM\ManyToOne(targetEntity=food::class, inversedBy="entryFood")
+     * @ORM\ManyToOne(targetEntity=Food::class, inversedBy="entryFood")
      */
     private $IDFood;
 
@@ -49,12 +49,12 @@ class EntryFood
         return $this;
     }
 
-    public function getIDFood(): ?food
+    public function getIDFood(): ?Food
     {
         return $this->IDFood;
     }
 
-    public function setIDFood(?food $IDFood): self
+    public function setIDFood(?Food $IDFood): self
     {
         $this->IDFood = $IDFood;
 

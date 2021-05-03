@@ -23,7 +23,7 @@ class UserFood
     private $IDUser;
 
     /**
-     * @ORM\ManyToOne(targetEntity=food::class)
+     * @ORM\ManyToOne(targetEntity=Food::class)
      */
     private $IDFood;
 
@@ -44,12 +44,12 @@ class UserFood
         return $this;
     }
 
-    public function getIDFood(): ?food
+    public function getIDFood(): ?Food
     {
         return $this->IDFood;
     }
 
-    public function setIDFood(?food $IDFood): self
+    public function setIDFood(?Food $IDFood): self
     {
         $this->IDFood = $IDFood;
 

@@ -59,10 +59,6 @@ class Food
         $this->entryFood = new ArrayCollection();
     }
 
-    /**
-     * @ORM\OneToMany(targetEntity=UserFood::class, mappedBy="IDAliment")
-     */
-
 
 
     public function getId(): ?int
