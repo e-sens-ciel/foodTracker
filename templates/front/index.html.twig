@@ -1,5 +1,12 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+
+{% for product in products %}
+{{ product.name }}
+{{ product.name }}
+
+{% endfor %}
+
  <!-- Hero Section Begin -->
     <section class="hero-section set-bg" data-setbg="assets/img/hero-bg.jpg">
         <div class="container">
@@ -7,7 +14,7 @@
                 <div class="col-lg-8">
                     <div class="hero-text">
                         <span>FITNESS ELEMENTS</span>
-                        <h1>BMI CALCULATOR</h1>
+                        <h1>BMI CALCULATOR </h1>
                         <p>Gutim comes packed with the user-friendly BMI Calculator<br /> shortcode which lets</p>
                         <a href="#" class="primary-btn">Read More</a>
                     </div>
@@ -404,6 +411,7 @@
     <!-- Membership Section End -->
 
     <!-- Register Section Begin -->
+    {% block content %}	
     <section class="register-section spad" >
         <div class="container">
             <div class="row">
@@ -413,6 +421,7 @@
                             <h2>Register Now</h2>
                             <p>The First 7 Day Trial Is Completely Free With The Teacher</p>
                         </div>
+                        {# {{ form_start(registrationForm) }} #}
                         <form action="#" class="register-form">
                             <div class="row">
                                 <div class="col-lg-6">
@@ -434,6 +443,7 @@
                             </div>
                             <button type="submit" class="register-btn">Get Started</button>
                         </form>
+                         {# {{ form_end(registrationForm) }} #}
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -445,7 +455,7 @@
         </div>
     </section>
     <!-- Register Section End -->
-
+    {% endblock %}
     <!-- Latest Blog Section Begin -->
     <section class="latest-blog-section spad">
         <div class="container">

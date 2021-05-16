@@ -50,7 +50,7 @@ class Entry
     private $energies;
 
     /**
-     * @ORM\OneToMany(targetEntity=User::class, mappedBy="entry")
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="Entry")
      */
     private $users;
 
@@ -60,15 +60,15 @@ class Entry
     private $entries;
 
     /**
-     * @ORM\OneToMany(targetEntity=User::class, mappedBy="entry_id")
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="Entry_id")
      */
-    private $entryUsers;
+    private $EntryUsers;
 
     public function __construct()
     {
         $this->users = new ArrayCollection();
         $this->entries = new ArrayCollection();
-        $this->entryUsers = new ArrayCollection();
+        $this->EntryUsers = new ArrayCollection();
     }
 
     /**
@@ -162,22 +162,22 @@ class Entry
         return $this->entries;
     }
 
-    public function addEntry(EntryFood $entry): self
+    public function addEntry(EntryFood $Entry): self
     {
-        if (!$this->entries->contains($entry)) {
-            $this->entries[] = $entry;
-            $entry->setIDEntry($this);
+        if (!$this->entries->contains($Entry)) {
+            $this->entries[] = $Entry;
+            $Entry->setIDEntry($this);
         }
 
         return $this;
     }
 
-    public function removeEntry(EntryFood $entry): self
+    public function removeEntry(EntryFood $Entry): self
     {
-        if ($this->entries->removeElement($entry)) {
+        if ($this->entries->removeElement($Entry)) {
             // set the owning side to null (unless already changed)
-            if ($entry->getIDEntry() === $this) {
-                $entry->setIDEntry(null);
+            if ($Entry->getIDEntry() === $this) {
+                $Entry->setIDEntry(null);
             }
         }
 
@@ -189,25 +189,25 @@ class Entry
      */
     public function getEntryUsers(): Collection
     {
-        return $this->entryUsers;
+        return $this->EntryUsers;
     }
 
-    public function addEntryUser(User $entryUser): self
+    public function addEntryUser(User $EntryUser): self
     {
-        if (!$this->entryUsers->contains($entryUser)) {
-            $this->entryUsers[] = $entryUser;
-            $entryUser->setEntryId($this);
+        if (!$this->EntryUsers->contains($EntryUser)) {
+            $this->EntryUsers[] = $EntryUser;
+            $EntryUser->setEntryId($this);
         }
 
         return $this;
     }
 
-    public function removeEntryUser(User $entryUser): self
+    public function removeEntryUser(User $EntryUser): self
     {
-        if ($this->entryUsers->removeElement($entryUser)) {
+        if ($this->EntryUsers->removeElement($EntryUser)) {
             // set the owning side to null (unless already changed)
-            if ($entryUser->getEntryId() === $this) {
-                $entryUser->setEntryId(null);
+            if ($EntryUser->getEntryId() === $this) {
+                $EntryUser->setEntryId(null);
             }
         }
 

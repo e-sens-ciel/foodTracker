@@ -5,13 +5,21 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Food;
 
 class FrontController extends AbstractController
 {
     #[Route('/index', name: 'index')]
     public function index(): Response
     {
-        return $this->render('front/index.html.twig');
+        $repo = $this->getDoctrine()->getRepository(Food::class);
+        $products = $repo->findAll();
+
+        return $this->render('front/index.html.twig', 
+    [
+        'controller_name' => "FrontController",
+        'products' => $products
+    ]);
     }
     #[Route('/main', name: 'main')]
     public function main(): Response

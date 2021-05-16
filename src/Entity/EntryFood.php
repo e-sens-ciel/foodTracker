@@ -18,12 +18,12 @@ class EntryFood
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=entry::class, inversedBy="entries")
+     * @ORM\ManyToOne(targetEntity=Entry::class, inversedBy="entries")
      */
     private $IDEntry;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Food::class, inversedBy="entryFood")
+     * @ORM\ManyToOne(targetEntity=Food::class, inversedBy="EntryFood")
      */
     private $IDFood;
 
@@ -37,12 +37,12 @@ class EntryFood
         return $this->id;
     }
 
-    public function getIDEntry(): ?entry
+    public function getIDEntry(): ?Entry
     {
         return $this->IDEntry;
     }
 
-    public function setIDEntry(?entry $IDEntry): self
+    public function setIDEntry(?Entry $IDEntry): self
     {
         $this->IDEntry = $IDEntry;
 
