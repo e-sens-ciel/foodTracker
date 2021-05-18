@@ -21,18 +21,10 @@ security:
             security: false
         main:
             anonymous: true
-            # lazy: true
-            # provider: app_user_provider
-            # guard:
-            #     authenticators:
-            #         - App\Security\FormulaireLoginAuthenticator
-            # logout:
-            #     path: app_logout
             provider: in_database
             form_login:
                 login_path: security_login
                 check_path: security_login
-                # where to redirect after logout
                 # target: index
             logout: 
                 path: security_logout
@@ -42,6 +34,8 @@ security:
 
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
+
+
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used

@@ -21,10 +21,10 @@ class FrontController extends AbstractController
         'products' => $products
     ]);
     }
-    #[Route('/main', name: 'main')]
-    public function main(): Response
+    #[Route('/bmicalculator', name: 'bmicalculator')]
+    public function bmicalculator(): Response
     {
-        return $this->render('front/main.html.twig');
+        return $this->render('front/bmicalculator.html.twig');
     }
     #[Route('/gallery', name: 'gallery')]
     public function gallery(): Response
