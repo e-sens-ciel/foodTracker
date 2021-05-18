@@ -1,13 +1,3 @@
-{# 
-{% extends 'base.html.twig' %}
-
-{% block body %} #}
-
-
-
-
-
-
 <html>
  <head>
   <title> BMI Calculator - Calculate Your BMI</title>
@@ -313,12 +303,11 @@ function countBmi(){
   var b = document.createTextNode('BMI: ');
   var r = document.createTextNode(parseFloat(bmi).toFixed(2));
   
+  form.appendChild(h1);
+  form.appendChild(h2);
   h1.appendChild(t);
   h2.appendChild(b);
   h2.appendChild(r);
-  
-  document.body.appendChild(h1);
-  document.body.appendChild(h2);
   document.getElementById("submit").removeEventListener("click", countBmi);
   document.getElementById("submit").removeEventListener("click", validateForm);
 }
@@ -328,4 +317,3 @@ document.getElementById("submit").addEventListener("click", countBmi);
 </html>
 
 
-{# {% endblock %} #}
