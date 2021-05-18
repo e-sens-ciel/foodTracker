@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -63,6 +64,8 @@ class User implements UserInterface
      * @ORM\ManyToOne(targetEntity=Entry::class, inversedBy="entryUsers")
      */
     private $entry_id;
+
+    public $confirm_password;
 
 
 

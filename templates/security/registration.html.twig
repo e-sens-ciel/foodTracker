@@ -1,0 +1,36 @@
+ {% extends 'base.html.twig' %}
+
+{% block body %} 
+<section class="hero-section set-bg register-section spad" data-setbg="assets/img/hero-bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="register-text">
+                        <div class="section-title" id="register">
+                            <h2>Register Now</h2>
+                            <p>The First 7 Day Trial Is Completely Free With The Teacher</p>
+                        </div>
+                        {{ form_start(form) }}
+                        {{ form_row(form.email, { 'label': 'Email adress', 'attr': {'placeholder': 'Email adress'}}) }}
+                        {{ form_row(form.password, { 'label': 'Password', 'attr': {'placeholder': 'Password'}}) }}
+                        {{ form_row(form.confirm_password, { 'label': 'Confirm password', 'attr': {'placeholder': 'Confirm password'}}) }}
+                        {{ form_row(form.name, { 'label': 'Name', 'attr': {'placeholder': 'Name'}}) }}
+                        {{ form_row(form.surname, { 'label': 'Surname', 'attr': {'placeholder': 'Surname'}}) }}
+                        {{ form_row(form.sexe, { 'label': 'Sexe', 'attr': {'placeholder': 'Sexe'}}) }}
+                        {{ form_row(form.height, { 'label': 'Height', 'attr': {'placeholder': 'Height'}}) }}
+                        {{ form_row(form.weight, { 'label': 'Weight', 'attr': {'placeholder': 'Weight'}}) }}
+                        <button type="submit" class="btn btn-success">Get Started</button>
+                        {{ form_end(form) }}
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="register-pic">
+                        <img src="assets/img/register-pic.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Register Section End -->
+{% endblock %} 
