@@ -6,9 +6,12 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
-
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(
+ * fields={"email"},
+ * message= "Email is already used.")
  */
 class User implements UserInterface
 {
@@ -21,6 +24,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email()
      */
     private $email;
 
@@ -32,6 +36,8 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\Length(min="8", minMessage="Your password is too short.")
+     * @Assert\EqualTo(propertyPath="confirm_password")
      */
     private $password;
 
@@ -65,6 +71,9 @@ class User implements UserInterface
      */
     private $entry_id;
 
+    /**
+     * @Assert\EqualTo(propertyPath="password")
+     */
     public $confirm_password;
 
 
@@ -216,6 +225,5 @@ class User implements UserInterface
 
         return $this;
     }
-
 
 }
